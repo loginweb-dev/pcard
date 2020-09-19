@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'FrontEndController@default')->name('page_default');
 Route::get('login/{social}', 'SocialiteController@redirectToProvider')->name('socialLogin');
 Route::get('login/{social}/callback', 'SocialiteController@handleProviderCallback');
-
+Route::get('/page/{slug}', 'FrontEndController@pages')->name('pages');
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 
