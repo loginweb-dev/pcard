@@ -10,6 +10,8 @@ class SettingsTableSeeder extends Seeder
      */
     public function run()
     {
+        $count=1; 
+
         $setting = $this->findSetting('site.title');
         if (!$setting->exists) {
             $setting->fill([
@@ -127,6 +129,18 @@ class SettingsTableSeeder extends Seeder
                 'type'         => 'text',
                 'order'        => 1,
                 'group'        => 'Admin',
+            ])->save();
+        }
+
+        $setting = $this->findSetting('site.page');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Pagina',
+                'value'        => 'landingpage-pcard',
+                'details'      => '',
+                'type'         => 'text',
+                'order'        => $count++,
+                'group'        => 'Site',
             ])->save();
         }
     }
